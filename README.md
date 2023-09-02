@@ -1,5 +1,6 @@
 # Code for Ultrasound Image Enhancement Challenge (USenhance) 2023 in MICCAI
 For the validation phase, we used GFE-Net, the method we proposed in A Generic Fundus Image Enhancement Network Boosted by Frequency Self-supervised Representation Learning [[arXiv]](https://arxiv.org/abs/2206.04684). 
+
 For the test phase, we proposed a structure-preserving medical image enhancement method based on unpaired training.
 
 # Enhancing and Adapting in the Clinic: Test-time Adaptation for Medical Image Enhancement
