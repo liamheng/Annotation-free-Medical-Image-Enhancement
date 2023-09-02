@@ -1,16 +1,6 @@
-# Structure-consistent Restoration Network for Cataract Fundus Image Enhancement (for the first phase)
-
-We propose a method of structure-consistent restoration network for cataract fundus image enhancement [[arXiv]](https://arxiv.org/abs/2206.04684). 
-
-
-
-# Unpaired Structure Persevere Medical Image Enhancement (for the second phase)
-
-We propose a method of unpaired structure persevere network for medical image enhancement. 
-
-![](./images/scrnet_overview.png)
-
-
+# Code for Ultrasound Image Enhancement Challenge (USenhance) 2023 in MICCAI
+For the validation phase, we used GFE-Net, the method we proposed in A Generic Fundus Image Enhancement Network Boosted by Frequency Self-supervised Representation Learning [[arXiv]](https://arxiv.org/abs/2206.04684). 
+For the test phase, we proposed a structure-preserving medical image enhancement method based on unpaired training.
 
 # Enhancing and Adapting in the Clinic: Test-time Adaptation for Medical Image Enhancement
 We propose an algorithm for test-time adaptive medical image enhancement (TAME), which adapts and optimizes enhancement models using test data in the inference phase.
