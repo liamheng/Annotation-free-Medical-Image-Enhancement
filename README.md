@@ -1,7 +1,7 @@
 # Code for Ultrasound Image Enhancement Challenge (USenhance) 2023 in MICCAI
 For the validation phase, we used GFE-Net, the method we proposed in A Generic Fundus Image Enhancement Network Boosted by Frequency Self-supervised Representation Learning [[More info]](https://github.com/liamheng/Annotation-free-Fundus-Image-Enhancement) [[arXiv]](https://arxiv.org/abs/2206.04684). 
 
-For the test phase, we proposed a structure-preserving medical image enhancement method based on unpaired training.
+For the test phase, we proposed a structure-preserving medical image enhancement (SPME) method based on unpaired training.
 
 # Enhancing and Adapting in the Clinic: Test-time Adaptation for Medical Image Enhancement
 We propose an algorithm for test-time adaptive medical image enhancement (TAME), which adapts and optimizes enhancement models using test data in the inference phase.
@@ -46,12 +46,13 @@ For GFE-Net:
 python train.py --dataroot ./datasets/ultrasound --name train_ultrasound_stillgan_twolow --eval_test --num_test 202-- gpu_ids 5 --test_when_train --test_freq 2 --display_id 430810 --batch_size 2 --model still_gan_scr --input_nc 1 --output_nc 1 --direction AtoB --dataset_mode Ultrasound_stillgan --lr_policy linear --n_epochs 200 --n_epochs_decay 100 --test_when_train --display_port 9013 --lr 0.001 --netG unet_combine_2layer
 ```
 
-For Unpaired Structure Persevere Medical Image Enhancement:
+For SPME:
 
 ```
 python train.py --dataroot ./datasets/ultrasound --name train_ultrasound_stillgan_twolow --eval_test --num_test 202-- gpu_ids 5 --test_when_train --test_freq 2 --display_id 430810 --batch_size 2 --model still_gan --input_nc 1 --output_nc 1 --direction AtoB --dataset_mode Ultrasound_stillgan --lr_policy linear --n_epochs 200 --n_epochs_decay 100 --test_when_train --display_port 9013 --lr 0.001
 ```
 
+For TAME:
 
 Released soon.
 
@@ -63,11 +64,13 @@ For GFE-Net:
 python test_stillgan.py --dataroot ./datasets/ultrasound --name train_ultrasound_stillgan_twolow --model still_gan_singlescr --input_nc 1 --output_nc 1 --direction AtoB --dataset_mode Ultrasound_stillgan --norm instance -- batch_size 8 --gpu_ids 6 --no_dropout -- postname last --netG unet_combine_2layer
 ```
 
-For Unpaired Structure Persevere Medical Image Enhancement:
+For SPME:
 
 ```
 python test_stillgan.py --dataroot ./datasets/ultrasound --name train_ultrasound_stillgan_twolow --model still_gan --input_nc 1 --output_nc 1 --direction AtoB --dataset_mode Ultrasound_stillgan --norm instance -- batch_size 8 --gpu_ids 6 --no_dropout -- postname last --netG resunet
 ```
+
+For TAME:
 
 Released soon.
 
