@@ -83,6 +83,8 @@ For the model of TAME 'Enhancing and Adapting in the Clinic: Test-time Adaptatio
 
 |        | Baidu Cloud                                                  | Google Cloud                                                 | Directory                                        |
 | ------ | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------ |
+| GFE-Net | Coming soon                                                  | Coming soon                                                  | project_root/checkpoints/TAME/latest_net_G.pth |
+| SPME | Coming soon                                                  | Coming soon                                                  | project_root/checkpoints/TAME/latest_net_G.pth |
 | TAME | Coming soon                                                  | Coming soon                                                  | project_root/checkpoints/TAME/latest_net_G.pth |
 
 
