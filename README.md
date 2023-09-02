@@ -2,7 +2,6 @@
 
 We propose a method of structure-consistent restoration network for cataract fundus image enhancement [[arXiv]](https://arxiv.org/abs/2206.04684). 
 
-![](./images/scrnet_overview.png)
 
 
 # Unpaired Structure Persevere Medical Image Enhancement (for the second phase)
