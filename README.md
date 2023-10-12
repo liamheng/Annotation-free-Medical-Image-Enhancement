@@ -3,8 +3,8 @@ For the validation phase, we used GFE-Net, the method we proposed in A Generic F
 
 For the test phase, we proposed a structure-preserving medical image enhancement (SPME) method based on unpaired training.
 
-# Enhancing and Adapting in the Clinic: Test-time Adaptation for Medical Image Enhancement
-We propose an algorithm for test-time adaptive medical image enhancement (TAME), which adapts and optimizes enhancement models using test data in the inference phase.
+# Enhancing and Adapting in the Clinic: Source-free Unsupervised Domain Adaptation for Medical Image Enhancement
+We propose an algorithm for Source-free unsupervised domain adaptive medical image enhancement (SAME), which adapts and optimizes enhancement models using test data in the inference phase.
 
 
 # Prerequisites
@@ -52,7 +52,7 @@ For SPME:
 python train.py --dataroot ./datasets/ultrasound --name train_ultrasound_stillgan_twolow --eval_test --num_test 202-- gpu_ids 5 --test_when_train --test_freq 2 --display_id 430810 --batch_size 2 --model still_gan --input_nc 1 --output_nc 1 --direction AtoB --dataset_mode Ultrasound_stillgan --lr_policy linear --n_epochs 200 --n_epochs_decay 100 --test_when_train --display_port 9013 --lr 0.001
 ```
 
-For TAME:
+For SAME:
 
 Released soon.
 
@@ -70,22 +70,22 @@ For SPME:
 python test_stillgan.py --dataroot ./datasets/ultrasound --name train_ultrasound_stillgan_twolow --model still_gan --input_nc 1 --output_nc 1 --direction AtoB --dataset_mode Ultrasound_stillgan --norm instance -- batch_size 8 --gpu_ids 6 --no_dropout -- postname last --netG resunet
 ```
 
-For TAME:
+For SAME:
 
 Released soon.
 
 
 ## Trained model's weight
 
-**Note:** If you want to use TAME in your own dataset, please re-train a new model with your own data, because it is a method based on domain adaptation, which means it needs target data (without ground truth) in the training phase.
+**Note:** If you want to use SAME in your own dataset, please re-train a new model with your own data, because it is a method based on domain adaptation, which means it needs target data (without ground truth) in the training phase.
 
-For the model of TAME 'Enhancing and Adapting in the Clinic: Test-time Adaptation for Medical Image Enhancement' please download the pretrained model and place the document based on the following table:
+For the model of SAME 'Enhancing and Adapting in the Clinic: Test-time Adaptation for Medical Image Enhancement' please download the pretrained model and place the document based on the following table:
 
 |        | Baidu Cloud                                                  | Google Cloud                                                 | Directory                                        |
 | ------ | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------ |
 | GFE-Net | Coming soon                                                  | Coming soon                                                  | project_root/checkpoints/GFE-Net/latest_net_G.pth |
 | SPME | Coming soon                                                  | [oneDrive](https://1drv.ms/u/s!Aoi-8GJo2S51kGPbCGhBpXwwAk1D?e=X2CKAr)                                                  | project_root/checkpoints/SPME/latest_net_G.pth |
-| TAME | Coming soon                                                  | Coming soon                                                  | project_root/checkpoints/TAME/latest_net_G.pth |
+| SAME | Coming soon                                                  | Coming soon                                                  | project_root/checkpoints/TAME/latest_net_G.pth |
 
 
 # Citation
