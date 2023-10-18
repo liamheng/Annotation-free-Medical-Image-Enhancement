@@ -1,4 +1,4 @@
-# Code for the 3rd Place Award Ultrasound Image Enhancement Challenge (USenhance) 2023 in MICCAI
+# Code for the 3rd Place Award of Ultrasound Image Enhancement Challenge (USenhance) 2023 in MICCAI
 For the validation phase, we used GFE-Net, the method we proposed in A Generic Fundus Image Enhancement Network Boosted by Frequency Self-supervised Representation Learning [[More info]](https://github.com/liamheng/Annotation-free-Fundus-Image-Enhancement) [[arXiv]](https://arxiv.org/abs/2206.04684). 
 
 For the test phase, we proposed a structure-preserving medical image enhancement (SPME) method based on unpaired training.
