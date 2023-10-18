@@ -1,20 +1,10 @@
-# Structure-consistent Restoration Network for Cataract Fundus Image Enhancement (for the first phase)
+# Code for the 3rd Place Award of Ultrasound Image Enhancement Challenge (USenhance) 2023 in MICCAI
+For the validation phase, we used GFE-Net, the method we proposed in A Generic Fundus Image Enhancement Network Boosted by Frequency Self-supervised Representation Learning [[More info]](https://github.com/liamheng/Annotation-free-Fundus-Image-Enhancement) [[arXiv]](https://arxiv.org/abs/2206.04684). 
 
-We propose a method of structure-consistent restoration network for cataract fundus image enhancement [[arXiv]](https://arxiv.org/abs/2206.04684). 
+For the test phase, we proposed a structure-preserving medical image enhancement (SPME) method based on unpaired training.
 
-![](./images/scrnet_overview.png)
-
-
-# Unpaired Structure Persevere Medical Image Enhancement (for the second phase)
-
-We propose a method of unpaired structure persevere network for medical image enhancement. 
-
-![](./images/scrnet_overview.png)
-
-
-
-# Enhancing and Adapting in the Clinic: Test-time Adaptation for Medical Image Enhancement
-We propose an algorithm for test-time adaptive medical image enhancement (TAME), which adapts and optimizes enhancement models using test data in the inference phase.
+# Enhancing and Adapting in the Clinic: Source-free Unsupervised Domain Adaptation for Medical Image Enhancement
+We propose an algorithm for Source-free unsupervised domain adaptive medical image enhancement (SAME), which adapts and optimizes enhancement models using test data in the inference phase.
 
 
 # Prerequisites
@@ -50,47 +40,52 @@ Please note that root directory is the project root directory.
 
 ## Train
 
-For ArcNet:
+For GFE-Net:
 
 ```
-python train.py --dataroot ./images/cataract_dataset --name arcnet --model arcnet --netG unet_256 --input_nc 6 --direction AtoB --dataset_mode cataract_guide_padding --norm batch --batch_size 8 --gpu_ids 0
+python train.py --dataroot ./datasets/ultrasound --name train_ultrasound_stillgan_twolow --eval_test --num_test 202-- gpu_ids 5 --test_when_train --test_freq 2 --display_id 430810 --batch_size 2 --model still_gan_scr --input_nc 1 --output_nc 1 --direction AtoB --dataset_mode Ultrasound_stillgan --lr_policy linear --n_epochs 200 --n_epochs_decay 100 --test_when_train --display_port 9013 --lr 0.001 --netG unet_combine_2layer
 ```
 
-For SCR-Net:
+For SPME:
 
 ```
-python train.py --dataroot ./images/cataract_dataset --name scrnet --model scrnet --input_nc 3 --direction AtoB --dataset_mode cataract_with_mask --norm instance --batch_size 8 --gpu_ids 0 --lr_policy linear --n_epochs 150 --n_epochs_decay 50
+python train.py --dataroot ./datasets/ultrasound --name train_ultrasound_stillgan_twolow --eval_test --num_test 202-- gpu_ids 5 --test_when_train --test_freq 2 --display_id 430810 --batch_size 2 --model still_gan --input_nc 1 --output_nc 1 --direction AtoB --dataset_mode Ultrasound_stillgan --lr_policy linear --n_epochs 200 --n_epochs_decay 100 --test_when_train --display_port 9013 --lr 0.001
 ```
 
+For SAME:
 
 Released soon.
 
 ## Test & Visualization
 
-For ArcNet:
+For GFE-Net:
 
 ```
-python test.py --dataroot ./images/cataract_dataset --name arcnet --model arcnet --netG unet_256 --input_nc 6 --direction AtoB --dataset_mode cataract_guide_padding --norm batch --gpu_ids 0
+python test_stillgan.py --dataroot ./datasets/ultrasound --name train_ultrasound_stillgan_twolow --model still_gan_singlescr --input_nc 1 --output_nc 1 --direction AtoB --dataset_mode Ultrasound_stillgan --norm instance -- batch_size 8 --gpu_ids 6 --no_dropout -- postname last --netG unet_combine_2layer
 ```
 
-For ScrNet:
+For SPME:
 
 ```
-python test.py --dataroot ./images/cataract_dataset --name scrnet --model scrnet --netG unet_combine_2layer --direction AtoB --dataset_mode cataract_with_mask --input_nc 3 --output_nc 3
+python test_stillgan.py --dataroot ./datasets/ultrasound --name train_ultrasound_stillgan_twolow --model still_gan --input_nc 1 --output_nc 1 --direction AtoB --dataset_mode Ultrasound_stillgan --norm instance -- batch_size 8 --gpu_ids 6 --no_dropout -- postname last --netG resunet
 ```
+
+For SAME:
 
 Released soon.
 
 
 ## Trained model's weight
 
-**Note:** If you want to use TAME in your own dataset, please re-train a new model with your own data, because it is a method based on domain adaptation, which means it needs target data (without ground truth) in the training phase.
+**Note:** If you want to use SAME in your own dataset, please re-train a new model with your own data, because it is a method based on domain adaptation, which means it needs target data (without ground truth) in the training phase.
 
-For the model of TAME 'Enhancing and Adapting in the Clinic: Test-time Adaptation for Medical Image Enhancement' please download the pretrained model and place the document based on the following table:
+For the model of SAME 'Enhancing and Adapting in the Clinic: Test-time Adaptation for Medical Image Enhancement' please download the pretrained model and place the document based on the following table:
 
 |        | Baidu Cloud                                                  | Google Cloud                                                 | Directory                                        |
 | ------ | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------ |
-| TAME | Coming soon                                                  | Coming soon                                                  | project_root/checkpoints/TAME/latest_net_G.pth |
+| GFE-Net | Coming soon                                                  | Coming soon                                                  | project_root/checkpoints/GFE-Net/latest_net_G.pth |
+| SPME | Coming soon                                                  | [oneDrive](https://1drv.ms/u/s!Aoi-8GJo2S51kGPbCGhBpXwwAk1D?e=X2CKAr)                                                  | project_root/checkpoints/SPME/latest_net_G.pth |
+| SAME | Coming soon                                                  | Coming soon                                                  | project_root/checkpoints/TAME/latest_net_G.pth |
 
 
 # Citation
