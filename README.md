@@ -2,7 +2,10 @@
 For the validation phase, we used GFE-Net, the method we proposed in A Generic Fundus Image Enhancement Network Boosted by Frequency Self-supervised Representation Learning [[More info]](https://github.com/liamheng/Annotation-free-Fundus-Image-Enhancement) [[arXiv]](https://arxiv.org/abs/2206.04684). 
 
 For the test phase, we proposed a structure-preserving medical image enhancement (SPME) method based on unpaired training.
-
+<center>
+<img src="imgs/证书3.jpg" width="500" align="center">
+</center>
+<img src="imgs/poster.png" width="500" align="center">
 # Enhancing and Adapting in the Clinic: Source-free Unsupervised Domain Adaptation for Medical Image Enhancement
 We propose an algorithm for Source-free unsupervised domain adaptive medical image enhancement (SAME), which adapts and optimizes enhancement models using test data in the inference phase.
 
