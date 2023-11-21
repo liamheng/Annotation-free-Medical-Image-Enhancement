@@ -57,7 +57,7 @@ python train.py --dataroot ./datasets/ultrasound --name train_ultrasound_stillga
 
 For SAME:
 
-Before the training, you need to place the [EyeQ](https://1drv.ms/u/s!Aoi-8GJo2S51kH5vxrzTzzIy4S6b?e=hcwJhB) into /pretrain/, and place the [source_checkpoint_S](https://1drv.ms/u/s!Aoi-8GJo2S51kH-p8Wtq5h5XtW90?e=necre4), [source_checkpoint_T](https://1drv.ms/u/s!Aoi-8GJo2S51kQAJY6bilCKuabHj?e=PI1WtS)into /pretrain/04_17_newDrive_unet_combine_2layer_L1_5_dropout_withTanh_lamda=0.95_bs=4_addbias.
+Before the training, you need to place the [EyeQ](https://1drv.ms/u/s!Aoi-8GJo2S51kH5vxrzTzzIy4S6b?e=hcwJhB) into /pretrain/, and place the [source_checkpoint_S](https://1drv.ms/u/s!Aoi-8GJo2S51kH-p8Wtq5h5XtW90?e=necre4), [source_checkpoint_T](https://1drv.ms/u/s!Aoi-8GJo2S51kQAJY6bilCKuabHj?e=PI1WtS) into /pretrain/04_17_newDrive_unet_combine_2layer_L1_5_dropout_withTanh_lamda=0.95_bs=4_addbias.
 
 ```
 python train_KD.py  --dataroot ./datasets/FIQ --name newdata_FIQ_unet_combine_2laye_L1_5_no_dropout_withTanh_KD_entropy=1_ema=0.995_bs=4_addbias --model SDA_KD --netG unet_combine_2layer --input_nc 3 --output_nc 1 --direction AtoB --dataset_mode FIQ
