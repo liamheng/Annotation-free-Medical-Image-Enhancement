@@ -91,9 +91,7 @@ if __name__ == '__main__':
     # 先拿到训练阶段的通用参数  之后再修改其他参数
     # TODO
     testOpt = copy.deepcopy(opt)
-    # testOpt = TestOptions().parse()  # get test_total options
-    # testOpt.dataroot = testOpt.test_dataroot_when_training
-    # testOpt.dataset_mode = 'cataract_guide_padding' if opt.model in ['cataract_dehaze', 'still_gan'] else opt.dataset_mode
+
     testOpt.dataroot = opt.test_dataroot_when_training
     testOpt.dataset_mode = opt.test_dataset_mode
     testOpt.phase = 'test_total'
@@ -110,25 +108,7 @@ if __name__ == '__main__':
 
     # define the website directory
     guide = True if 'guide' in opt.dataset_mode else False
-    # ------------------------------------
-    # # ------------测试模型-----------------
-    # # if opt.test_when_train:
-    # if opt.test_when_train:
-    #     test_web_dir = os.path.join(testOpt.results_dir, testOpt.name,
-    #                                 '{}_{}'.format(testOpt.phase, 'latest'))
-    #     test_web_dir = '{:s}_iter{:d}'.format(test_web_dir, 0)
-    #     print('creating web directory', test_web_dir)
-    #     model_test(testOpt, testDataset, model, test_web_dir, guide)
-    #     if opt.is_fid_score:
-    #         cataractTestDataset = CataractTestDataset(opt, test_web_dir)
-    #         ssim = model_eval(testOpt, test_web_dir, wrap=False)
-    #         eval_public(opt, cataractTestDataset)
-    #     else:
-    #         ssim = model_eval(testOpt, test_web_dir)
-    #     if ssim > max_ssim:
-    #         max_ssim = ssim
-    #         # print('saving the model at the end of epoch %d, iters %d' % (epoch, total_iters))
-    #         # model.save_networks(epoch)
+  
     # # ------------测试模型-----------------
     start_time = datetime.datetime.now()
     print(start_time)
@@ -138,14 +118,7 @@ if __name__ == '__main__':
         epoch_iter = 0                  # the number of training iterations in current epoch, reset to 0 every epoch
         visualizer.reset()              # reset the visualizer: make sure it saves the results to HTML at least once every epoch
         model.update_learning_rate()    # update learning rates in the beginning of every epoch.在每个epoch开始前更新
-        # for i, images in enumerate(dataset_S):  # inner loop within one epoch
-        # for i, images in enumerate(zip(dataset_S, dataset_T)):
-        # -----可能会对训练产生影响，修改G_DD的学习率------
-        # if epoch == int(opt.n_epochs * 0.5) and 'lambda_G_DD' in opt:
-        #     opt.lambda_G_DD = opt.lambda_G_DD * 0.6
-        # elif epoch == int(opt.n_epochs * 0.9) and 'lambda_G_DD' in opt:
-        #     opt.lambda_G_DD = opt.lambda_G_DD * 0.6
-
+    
         for i, data_source in enumerate(dataset):
             data = data_source
             iter_start_time = time.time()  # timer for computation per iteration
@@ -178,14 +151,7 @@ if __name__ == '__main__':
                     # TODO:可视化时适当修改dataset_size
                     visualizer.plot_current_losses(epoch, float(epoch_iter) / dataset_size, losses)
 
-            # TODO
-            # # 保存网络，根据图像的的iter来，而不是epoch，基本不用，因为iter不是累加的
-            # if total_iters % opt.save_latest_freq == 0:   # cache our latest model every <save_latest_freq> iterations
-            #     print('saving the latest model (epoch %d, total_iters %d)' % (epoch, total_iters))
-            #     save_suffix = 'iter_%d' % total_iters if opt.save_by_iter else 'latest'
-            #     model.save_networks(save_suffix)
-            # iter_data_time = time.time()
-
+     
         # ------------测试模型-----------------
         if opt.test_when_train:
             test_web_dir = os.path.join(testOpt.results_dir, testOpt.name,
@@ -200,59 +166,7 @@ if __name__ == '__main__':
             ssim = model_eval(testOpt, test_web_dir)
             if ssim[0] > max_ssim:
                 max_ssim = ssim[0]
-        #         max_ssim_iter = epoch
-        #         print('saving the model at the end of epoch %d, iters %d' % (epoch, total_iters))
-        #         model.save_networks(epoch)
-        # if opt.test_A2A:
-        #
-        #     test_web_dir2 = os.path.join(testOpt.results_dir, testOpt.name,
-        #                                 '{}_{}'.format(testOpt.phase, 'latest'))
-        #     test_web_dir2 = '{:s}_iter{:d}'.format(test_web_dir2, 1)
-        #     print('creating web directory', test_web_dir2)
-        #     A2ATestOpt, A2ATestDataset = set_A2A_opt(opt)
-        #     model_test(A2ATestOpt, A2ATestDataset, model, test_web_dir2, guide)
-        #     ssim = model_eval_ultrasound(A2ATestOpt, test_web_dir2, wrap=False)
-        #     if ssim[0] > max_ssim2:
-        #         max_ssim2 = ssim[0]
-        #         max_ssim_iter2 = epoch
-        #         print('saving the model at the end of epoch %d, iters %d' % (epoch, total_iters))
-        #         model.save_networks(epoch)
-        # ------------测试模型-----------------
-        # TODO:测试模型
-        # # ------------测试模型-----------------
-        # if (opt.test_when_train and epoch % opt.test_freq == 0) or (opt.test_when_train and epoch == 2):
-        #     test_web_dir = os.path.join(testOpt.results_dir, testOpt.name,
-        #                                 '{}_{}'.format(testOpt.phase, 'latest'))
-        #     test_web_dir = '{:s}_iter{:d}'.format(test_web_dir, epoch)
-        #     print('creating web directory', test_web_dir)
-        #     model_test(testOpt, testDataset, model, test_web_dir, guide, testOpt.eval_test)
-        #     if not opt.is_public_test_dataset and (opt.test_rcf or opt.test_fiq):
-        #         if opt.is_fid_score:
-        #             ssim = model_eval(testOpt, test_web_dir, meters=meters, wrap=False)
-        #
-        #         else:
-        #             ssim = model_eval(testOpt, test_web_dir, meters=meters)
-        #     # else:
-        #     #     if opt.is_fid_score:
-        #     #         cataractTestDataset = CataractTestDataset(opt, test_web_dir)
-        #     #         eval_public(opt, cataractTestDataset)
-        #     if opt.is_fid_score:
-        #         cataractTestDataset = CataractTestDataset(opt, test_web_dir)
-        #         eval_public(opt, cataractTestDataset)
-        #         print('eval finished:', len(cataractTestDataset))
-        #             # if ssim > max_ssim:
-        #             #     max_ssim = ssim
-        #             #     max_ssim_iter = epoch
-        #             # print('saving the model at the end of epoch %d, iters %d' % (epoch, total_iters))
-        #             # model.save_networks(epoch)
-        #
-        # elif epoch % 5 == 0 or epoch == 2:
-        #     test_web_dir = os.path.join(testOpt.results_dir, testOpt.name,
-        #                                 '{}_{}'.format(testOpt.phase, 'latest'))
-        #     test_web_dir = '{:s}_iter{:d}'.format(test_web_dir, epoch)
-        #     print('creating web directory', test_web_dir)
-        #     model_test(testOpt, testDataset, model, test_web_dir, guide)
-        #
+   
         # # ------------测试模型-----------------
 
         # 保存网络
