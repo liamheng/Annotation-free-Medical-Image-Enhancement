@@ -186,6 +186,3 @@ if __name__ == '__main__':
 
     print(f"The program ran for {elapsed_hours} hours")
     model.save_networks('latest')
-    print("max_ssim", max_ssim,"max_epoch",max_ssim_iter)
-    print("max_ssim2", max_ssim2, "max_epoch2", max_ssim_iter2)
-
