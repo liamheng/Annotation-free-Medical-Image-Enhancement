@@ -80,7 +80,7 @@ python train_KD.py  --dataroot ./datasets/FIQ --name newdata_FIQ_unet_combine_2l
 --norm instance --batch_size 4 --lr_policy linear --n_epochs 150 --n_epochs_decay 50 --gpu_ids 5 --display_id 4101130 --test_dataset_mode FIQ --pre_model --num_threads 4 --display_port 8099 --is_fiq --lambda_l1 0.9 --lambda_cl 0.1
 ```
 
-1
+
 
 ## Trained model's weight
 
