@@ -155,15 +155,7 @@ class SDAKDModel(BaseModel):
         self.s_fake = (self.s_fake + 1) * self.mask - 1
         self.t_fake = (self.t_fake + 1) * self.mask - 1
 
-        # # 保存self.s_fake图像
-        # image_tensor = self.s_fake.data
-        # image_numpy = image_tensor[0].cpu().float().numpy()
-        # test_cat = (np.transpose(image_numpy, (1, 2, 0)) + 1) / 2.0 * 255.0
-        # test_cat = test_cat.astype(np.uint8)
-        # print(test_cat)
-        # image = Image.fromarray(test_cat).convert("RGB")
-        # # # 保存image图像
-        # image.save("test_kd.png")
+
         if self.isTrain:
             # 将Tensor的数据类型转换为uint8，并将其值范围限制在0-255之间
             # input_tensor_uint8 = (self.s_fake.clamp(0, 1) * 255).type(torch.uint8)
@@ -240,16 +232,7 @@ class SDAKDModel(BaseModel):
         self.loss_G_L1 = self.criterionContent(self.s_pesudo, self.t_pesudo) * self.opt.lambda_l1
         self.loss_G_seg = self.criterionSegment(self.s_seg_pesudo, self.t_seg_pesudo) * self.opt.lambda_cl
         self.loss_entro = self.entro(self.s_seg_pesudo) * self.opt.lambda_ent
-        # # TODO ：系数
-        # # self.loss_MSL = self.msl(self.s_fake_seg)
-
-        # self.loss_entro = self.entro(self.s_seg_pesudo) * self.opt.lambda_ent
-        # self.loss_G_L1 = self.criterionContent(self.s_fake, self.t_fake) * self.opt.lambda_l1
-        # self.loss_G_seg = self.criterionSegment(self.s_fake_seg, self.t_fake_seg) * self.opt.lambda_cl
-        # self.loss_entro = self.entro(self.s_fake_seg) * self.opt.lambda_ent
-
-
-        # self.loss_G = self.loss_G_L1 + self.loss_entro + self.loss_G_seg
+   
         self.loss_G = self.loss_G_L1 + self.loss_entro
         self.loss_G.backward()       # calculate gradients of network G w.r.t. loss_G
 
