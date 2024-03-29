@@ -10,11 +10,9 @@ For the test phase, we proposed a structure-preserving medical image enhancement
 We propose an algorithm for Source-free unsupervised domain adaptive medical image enhancement (SAME), which adapts and optimizes enhancement models using test data in the inference phase.
 
 # Enhancing and Adapting in the Clinic: Source-free Unsupervised Domain Adaptation for Medical Image Enhancement
-There is little access to large datasets of cataract images paired with their corresponding clear ones. Therefore, it is unlikely to build a restoration model for cataract images through supervised learning.
+In this paper, we raise an algorithm for source-free unsupervised domain adaptive medical image enhancement(SAME), which adapts and optimizes enhancement models using test data in the inference phase. Referring to [[arXir]](https://arxiv.org/pdf/2312.01338.pdf).
 
-Here, we propose an annotation-free restoration network for cataractous fundus images referring to [[arXir]](https://arxiv.org/abs/2203.07737).
-
-![Overview of SAME](./images/arcnet_overview.png)
+![Overview of SAME](./images/SAME.png)
 Here is the citation information:
 
 ```
