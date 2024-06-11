@@ -113,8 +113,7 @@ For the model of SAME 'Enhancing and Adapting in the Clinic: Test-time Adaptatio
 | ------ | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------ |
 | GFE-Net | Coming soon                                                  | Coming soon                                                  | project_root/checkpoints/GFE-Net/latest_net_G.pth |
 | SPME | Coming soon                                                  | [oneDrive](https://1drv.ms/u/s!Aoi-8GJo2S51kGPbCGhBpXwwAk1D?e=X2CKAr)                                                  | project_root/checkpoints/SPME/latest_net_G.pth |
-| SAME | Coming soon                                                  | [oneDrive](https://1drv.ms/u/s!Aoi-8GJo2S51kH-p8Wtq5h5XtW90?e=necre4) [oneDrive](https://1drv.ms/u/s!Aoi-8GJo2S51kQAJY6bilCKuabHj?e=PI1WtS)                                                   | project_root/pretrain/04_17_newDrive_unet_combine_2layer_L1_5_dropout_withTanh_lamda=0.95_bs=4_addbias/latest_net_S.pth
-project_root/pretrain/04_17_newDrive_unet_combine_2layer_L1_5_dropout_withTanh_lamda=0.95_bs=4_addbias/latest_net_T.pth|
+| SAME | Coming soon                                                  | [oneDrive](https://1drv.ms/u/s!Aoi-8GJo2S51kH-p8Wtq5h5XtW90?e=necre4) [oneDrive](https://1drv.ms/u/s!Aoi-8GJo2S51kQAJY6bilCKuabHj?e=PI1WtS)                                                   | project_root/pretrain/04_17_newDrive_unet_combine_2layer_L1_5_dropout_withTanh_lamda=0.95_bs=4_addbias/latest_net_S.pth AND project_root/pretrain/04_17_newDrive_unet_combine_2layer_L1_5_dropout_withTanh_lamda=0.95_bs=4_addbias/latest_net_T.pth|
 | SAME | Coming soon                                                  | [oneDrive](https://1drv.ms/u/s!Aoi-8GJo2S51kH7axGN9ALDJ9pOA?e=g0zgn5) | project_root/pretrain/DenseNet121_v3_v1.tar |
 
 # Citation
